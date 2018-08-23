@@ -1,0 +1,42 @@
+Git使用
+1. 创建仓库
+   git init即可将该文件夹作为一个仓库，创建完成后会生成 dir.git
+2. git的工作区，暂存区和分支
+   文件夹内为工作区，另外有暂存区和分支
+   未经过git命令的文件为工作区
+   经过git add命令的文件放在暂存区中
+   经过git commit命令的文件从暂存区放到分支中
+3. 创建新文件
+   新文件创建好之后，首先通过git add filename 命令将新文件存入暂存区
+   然后通过git commit -m "description" 命令将新文件从暂存区存入到分支中
+4. 查看当前仓库的状态
+   通过git status命令可以查看当前仓库的状态：文件修改、是否提交等等
+5. 查看修改的不同
+   通过git diff命令可以查看当前文件与之前的不同
+6. 查看历史版本
+   通过git log命令可以查看历史commit的命令
+   当前版本用HEAD表示，上一版本用HEAD^表示，多个版本用HEAD~N来表示
+7. 版本回退
+   通过git reset 版本号来回退到对应的版本
+8. 查看历史命令
+   git reflog
+9. 恢复命令
+   git checkout -- filename
+   用来：1. 撤销修改，将版本库的内容替换工作区的内容
+         2. 错误删除文件的恢复
+    --表示在当前分支进行操作
+    
+	当文件经过git add命令存入到暂存区中，需要回退文件，需要先 git reset HEAD filename 再 git checkout -- filename
+10. 删除文件
+    删除文件之后，用git rm filename来删除
+11. github使用
+    1.首先本机要建立sshkey
+	  ssh-keygen -t rsa -s "email"
+	2.在github的个人设置页面上添加对应的sshkey
+	  粘贴对应的id_rsa.pub文件内容
+	3. 连接github
+	   git remote add origin git@github.com:username/reponame.git
+	4. 推送本机到github
+	   git push [-u] origin master 在首次推送加-u
+	5. 克隆仓库到本机
+	   git clone git@github.com:username/reponame.git
